@@ -207,7 +207,7 @@
 			EMAIL: 'Please enter a valid email.',
 			JOB: 'Please enter your job.',
 			COMPANY: 'Please enter your company name.',
-			'acceptance-dummy': 'You must accept our terms before doanloading.',
+			'acceptance-dummy': 'You must accept our terms before downloading.',
 			'captcha-170': 'Plase enter captcha.'
 		}
 
