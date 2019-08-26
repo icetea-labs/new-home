@@ -46,6 +46,8 @@
 		var $form = $( form );
 
 		$form.submit( function( event ) {
+			event.preventDefault()
+
 			if ( ! wpcf7.supportHtml5.placeholder ) {
 				$( '[placeholder].placeheld', $form ).each( function( i, n ) {
 					$( n ).val( '' ).removeClass( 'placeheld' );
@@ -195,11 +197,43 @@
 
 		var $form = $( form );
 
-		$( '.ajax-loader', $form ).addClass( 'is-active' );
-
 		wpcf7.clearResponse( $form );
 
 		var formData = new FormData( $form.get( 0 ) );
+		var $message = $( '.wpcf7-response-output', $form );
+
+		var requiredFields = {
+			FULLNAME: 'Please enter your full name.',
+			EMAIL: 'Please enter a valid email.',
+			JOB: 'Please enter your job.',
+			COMPANY: 'Please enter your company name.',
+			'acceptance-dummy': 'You must accept our terms before doanloading.',
+			'captcha-170': 'Plase enter captcha.'
+		}
+
+		var hasInvalidField = false
+		Object.keys(requiredFields).forEach(function(k){
+			if (hasInvalidField) return
+			var v = formData.get(k)
+			if (v != null && !v.trim().length) {
+				hasInvalidField = true
+				$message.addClass( 'wpcf7-mail-sent-ng' );
+				$form.addClass( 'failed' );
+				$message.html( '' ).append( requiredFields[k] ).slideDown( 'fast' );
+				$message.attr( 'role', 'alert' );
+			}
+		})
+		if (hasInvalidField) return
+
+		var email = formData.get('EMAIL')
+		var emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  		if (!emailRegEx.test(email)) {
+			$message.addClass( 'wpcf7-mail-sent-ng' );
+			$form.addClass( 'failed' );
+			$message.html( '' ).append( 'Invalid email address. Please enter a valid one.' ).slideDown( 'fast' );
+			$message.attr( 'role', 'alert' );
+			return
+		}
 
 		var detail = {
 			id: $form.closest( 'div.wpcf7' ).attr( 'id' ),
@@ -232,14 +266,12 @@
 			}
 		} );
 
-		wpcf7.triggerEvent( $form.closest( 'div.wpcf7' ), 'beforesubmit', detail );
+		//wpcf7.triggerEvent( $form.closest( 'div.wpcf7' ), 'beforesubmit', detail );
 
 		var ajaxSuccess = function( data, status, xhr, $form ) {
 			detail.id = $( data.into ).attr( 'id' );
 			detail.status = data.result;
 			detail.apiResponse = data;
-
-			var $message = $( '.wpcf7-response-output', $form );
 
 			switch ( data.result ) {
 				case 'success':
@@ -305,6 +337,8 @@
 				$response.attr( 'role', 'alert' ).focus();
 			} );
 		};
+
+		$( '.ajax-loader', $form ).addClass( 'is-active' );
 
 		$.ajax( {
 			url: '//icetea.us3.list-manage.com/subscribe/post-json?u=0fbb6304481fc398e41b28f09&id=5968f8dfbe',

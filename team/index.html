@@ -400,68 +400,15 @@ margin-bottom: 6px;
 
 
 <!-- mfn_hook_bottom --><!-- mfn_hook_bottom -->
-<script>
-(function ($) {
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-8597504-9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  $('form.wpcf7-form').each(function(){
-    var $form = $(this)
-    $form.off('submit').on('submit', function(e) {
-      e.preventDefault()
-      var formData = $form.serialize()
-      setTimeout(function () {
-        if (!window._f7invalid) {
-          if ($form.attr('id') === 'downloadForm') {
-            window.open('/wp-content/uploads/2019/08/Icetea-Whitepaper-v0.1.pdf', '_blank')
-          }
-          $.ajax({
-            url: '//icetea.us3.list-manage.com/subscribe/post-json?u=0fbb6304481fc398e41b28f09&id=5968f8dfbe',
-            data: formData,
-            dataType: 'jsonp',
-            jsonp: 'c'
-          }).then(function () {
-            console.log(arguments)
-          })
-        } else {
-          window._f7invalid = false
-        }
-        $('.wpcf7-submit').prop('disabled', false)
-      }, 1500)
-    })
-  })
-/*
-  var $f = $('.wpcf7')
-
-  $f.on('wpcf7submit', function () {
-    var $form = $(this).find('form')
-    var formData = $form.serialize()
-    $('.wpcf7-submit').prop('disabled', true)
-    setTimeout(function () {
-      if (!window._f7invalid) {
-        if ($form.attr('id') === 'downloadForm') {
-          window.open('/wp-content/uploads/2019/08/Icetea-Whitepaper-v0.1.pdf', '_blank')
-        }
-        $.ajax({
-          url: '//icetea.us3.list-manage.com/subscribe/post-json?u=0fbb6304481fc398e41b28f09&id=5968f8dfbe',
-          data: formData,
-          dataType: 'jsonp',
-          jsonp: 'c'
-        }).then(function () {
-          // console.log('arguments)
-        })
-      } else {
-        window._f7invalid = false
-      }
-      $('.wpcf7-submit').prop('disabled', false)
-    }, 1500)
-  })
-
-  $f.on('wpcf7invalid', function (event) {
-    window._f7invalid = true
-  })
-  */
-})(jQuery)
-
-</script>
+    gtag('config', 'UA-8597504-9');
+  </script>
 <script type='text/javascript'>
 /* <![CDATA[ */
 var wpcf7 = {"apiSettings":{"root":".\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
