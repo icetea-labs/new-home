@@ -211,16 +211,20 @@
 			'captcha-170': 'Plase enter captcha.'
 		}
 
+		var showError = function(msg) {
+			$message.addClass( 'wpcf7-mail-sent-ng' );
+			$form.addClass( 'failed' );
+			$message.html( '' ).append( msg ).slideDown( 'fast' );
+			$message.attr( 'role', 'alert' );
+		}
+
 		var hasInvalidField = false
 		Object.keys(requiredFields).forEach(function(k){
 			if (hasInvalidField) return
 			var v = formData.get(k)
 			if (v != null && !v.trim().length) {
 				hasInvalidField = true
-				$message.addClass( 'wpcf7-mail-sent-ng' );
-				$form.addClass( 'failed' );
-				$message.html( '' ).append( requiredFields[k] ).slideDown( 'fast' );
-				$message.attr( 'role', 'alert' );
+				showError( requiredFields[k] )
 			}
 		})
 		if (hasInvalidField) return
@@ -228,10 +232,13 @@
 		var email = formData.get('EMAIL')
 		var emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   		if (!emailRegEx.test(email)) {
-			$message.addClass( 'wpcf7-mail-sent-ng' );
-			$form.addClass( 'failed' );
-			$message.html( '' ).append( 'Invalid email address. Please enter a valid one.' ).slideDown( 'fast' );
-			$message.attr( 'role', 'alert' );
+			showError( 'Invalid email address. Please enter a valid one.' )
+			return
+		}
+
+		var captcha = formData.get('captcha-170')
+		if (captcha != null && captcha !== 'KC5Y') {
+			showError('Invalid captcha.')
 			return
 		}
 
