@@ -118,26 +118,6 @@ blockquote {
 <link rel='shortlink' href='./../index.html?p=8' />
 <link rel="alternate" type="application/json+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=http%3A%2F%2F%2Fteam%2F" />
 <link rel="alternate" type="text/xml+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=http%3A%2F%2F%2Fteam%2F&#038;format=xml" />
-<!--script  src="./wp-includes/js/three.r92.min.js"></script-->
-<!--script  src="./wp-includes/js/vanta.birds.min.js"></script-->
-<!--script>
-window.addEventListener('load', function () {
-if (!document.getElementById('hero-pane')) return;
-VANTA.BIRDS({
-  el: "#hero-pane",
-  backgroundColor: 0xffffff,
- color1: 0x15b7dd,
-  colorMode: "lerpGradient",
-  birdSize: 2.40,
-  wingSpan: 10.00,
-  speedLimit: 5.00,
-  separation: 100.00,
-  cohesion: 0.00,
-  quantity: 3.00
-})
-})
-
-</script-->
 <meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
 <link rel="icon" href="./../wp-content/uploads/2019/07/cropped-Icon-32x32.png" sizes="32x32" />
 <link rel="icon" href="./../wp-content/uploads/2019/07/cropped-Icon-192x192.png" sizes="192x192" />
@@ -157,22 +137,21 @@ display:block;
 .header-plain #Action_bar .contact_details li {
 padding: 6px 0;
 }
-@media only screen and (min-width: 768px) {
-.email-sub {
-    max-width:none!important;
-}
-	.email-sub-text {
-		display: inline-block;
-		width: 320px;
-	}
-	.email-sub-button {
-		display: inline-block;
-		padding-left: 8px;
-	}
-}
 @media only screen and (max-width: 479px) {
 #logo img {
     height:36px;
+}
+}
+
+#subForm {
+max-width:480px;
+margin-left: auto;
+margin-right:auto;
+}
+
+@media only screen and (max-width: 767px) {
+.column.email-sub-text {
+margin-bottom: 6px;
 }
 }		</style>
 		<noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>
@@ -217,7 +196,7 @@ padding: 6px 0;
 				<div class="logo"><a id="logo" href="./../index.html" title="Icetea Blockchain" data-height="60" data-padding="15"><img class="logo-main scale-with-grid" src="./../wp-content/uploads/2019/07/Logo-Blue-185x50.png" data-retina="/wp-content/uploads/2019/07/Logo-Blue-369x100.png" data-height="" alt="" data-no-retina /><img class="logo-sticky scale-with-grid" src="./../wp-content/uploads/2019/07/Logo-Blue-185x50.png" data-retina="/wp-content/uploads/2019/07/Logo-Blue-369x100.png" data-height="" alt="" data-no-retina /><img class="logo-mobile scale-with-grid" src="./../wp-content/uploads/2019/07/Logo-Blue-185x50.png" data-retina="./wp-content/uploads/2019/07/Logo-Blue-369x100.png" data-height="50" alt="Logo-Blue-185x50" data-no-retina /><img class="logo-mobile-sticky scale-with-grid" src="./../wp-content/uploads/2019/07/Logo-Blue-185x50.png" data-retina="./wp-content/uploads/2019/07/Logo-Blue-369x100.png" data-height="50" alt="Logo-Blue-185x50" data-no-retina /></a></div>
 				<div class="menu_wrapper">
 					<nav id="menu"><ul id="menu-main-menu" class="menu menu-main"><li id="menu-item-51" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="./../technology/index.html"><span>Technology</span></a></li>
-<li id="menu-item-62" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://testnet.icetea.io"><span>Developers</span></a></li>
+<li id="menu-item-62" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://testnet.icetea.io/"><span>Developers</span></a></li>
 <li id="menu-item-52" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-8 current_page_item"><a href="./index.html"><span>Team</span></a></li>
 <li id="menu-item-117" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://t.me/iceteachainvn"><span><div class="themecolor" icon="icon-paper-plane" icon-position="right">Let&#8217;s chat now!</div></span></a></li>
 </ul></nav><a class="responsive-menu-toggle" href="#"><i class="icon-menu-fine"></i></a>				</div>
@@ -326,25 +305,19 @@ padding: 6px 0;
 					<h5><i><b>Stay updated on the lastest news</b></i></h5>
 <hr class="no_line" style="margin: 0 auto 20px;"/>
 
-<script>(function() {
-	if (!window.mc4wp) {
-		window.mc4wp = {
-			listeners: [],
-			forms    : {
-				on: function (event, callback) {
-					window.mc4wp.listeners.push({
-						event   : event,
-						callback: callback
-					});
-				}
-			}
-		}
-	}
-})();
-</script><!-- Mailchimp for WordPress v4.5.3 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-207" method="post" data-id="207" data-name="Subscription" ><div class="mc4wp-form-fields"><div class="email-sub" style="max-width:320px;margin-left:auto;margin-right:auto">
-  <div class="email-sub-text"><input style="width:100%" type="email" name="EMAIL" placeholder="Email address" required /></div>
-  <div class="email-sub-button"><input type="submit" value="SIGN ME UP" /></div>
-</div></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1566396716" /><input type="hidden" name="_mc4wp_form_id" value="207" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" /><div class="mc4wp-response"></div></form><!-- / Mailchimp for WordPress Plugin -->				</div>
+<div role="form" class="wpcf7" id="wpcf7-f109-o1" lang="en-US" dir="ltr">
+<div class="screen-reader-response"></div>
+<form action="./index.html#wpcf7-f109-o1" method="post" class="wpcf7-form demo" novalidate="novalidate" id="subForm">
+<div style="display: none;">
+<input type="hidden" name="_wpcf7" value="109" />
+<input type="hidden" name="_wpcf7_version" value="5.1.4" />
+<input type="hidden" name="_wpcf7_locale" value="en_US" />
+<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f109-o1" />
+<input type="hidden" name="_wpcf7_container_post" value="0" />
+</div>
+<div class="column five-sixth email-sub-text"><span class="wpcf7-form-control-wrap EMAIL"><input type="email" name="EMAIL" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Enter your e-mail" /></span></div>
+<div class="column one-sixth" email-sub-button><input type="submit" value="Subscribe" class="wpcf7-form-control wpcf7-submit" /></div>
+<div class="wpcf7-response-output wpcf7-display-none"></div></form></div>				</div>
 			</div>
 		</div>
 		
@@ -382,7 +355,7 @@ padding: 6px 0;
 <div style="text-align: left;">
 
 <ul style="list-style-type:none;">
-	<li><a href="https://testnet.icetea.io" target="_blank" rel="noopener noreferrer">Testnet v1.0</a></li>
+	<li><a href="https://icetea.io/testnet" target="_blank" rel="noopener noreferrer">Testnet v1.0</a></li>
 		<li><a href="./../index.html#whitepaper" target="_blank" rel="noopener noreferrer">Whitepaper v0.1</a></li>
 	<li><a href="https://docs.icetea.io/" target="_blank" rel="noopener noreferrer">Documentation</a></li>
 	<li><a href="https://github.com/TradaTech" target="_blank" rel="noopener noreferrer">Github</a></li>
@@ -428,60 +401,68 @@ padding: 6px 0;
 
 <!-- mfn_hook_bottom --><!-- mfn_hook_bottom -->
 <script>
-(function($) {
-var $f = $('.wpcf7')
-$f.on( 'submit', function() {
-$('.wpcf7-submit').prop('disabled', true)
-setTimeout(function(){
-   if (!window._f7invalid) {
-     window.open('/wp-content/uploads/2019/08/Icetea-Whitepaper-v0.1.pdf', '_blank');
-   } else {
-     window._f7invalid = false;
-   }
-   $('.wpcf7-submit').prop('disabled', false)
-}, 1500);
-});
-$f.on( 'wpcf7invalid', function( event ) {
-   window._f7invalid = true;
-});
+(function ($) {
+
+  $('form.wpcf7-form').each(function(){
+    var $form = $(this)
+    $form.off('submit').on('submit', function(e) {
+      e.preventDefault()
+      var formData = $form.serialize()
+      setTimeout(function () {
+        if (!window._f7invalid) {
+          if ($form.attr('id') === 'downloadForm') {
+            window.open('/wp-content/uploads/2019/08/Icetea-Whitepaper-v0.1.pdf', '_blank')
+          }
+          $.ajax({
+            url: '//icetea.us3.list-manage.com/subscribe/post-json?u=0fbb6304481fc398e41b28f09&id=5968f8dfbe',
+            data: formData,
+            dataType: 'jsonp',
+            jsonp: 'c'
+          }).then(function () {
+            console.log(arguments)
+          })
+        } else {
+          window._f7invalid = false
+        }
+        $('.wpcf7-submit').prop('disabled', false)
+      }, 1500)
+    })
+  })
+/*
+  var $f = $('.wpcf7')
+
+  $f.on('wpcf7submit', function () {
+    var $form = $(this).find('form')
+    var formData = $form.serialize()
+    $('.wpcf7-submit').prop('disabled', true)
+    setTimeout(function () {
+      if (!window._f7invalid) {
+        if ($form.attr('id') === 'downloadForm') {
+          window.open('/wp-content/uploads/2019/08/Icetea-Whitepaper-v0.1.pdf', '_blank')
+        }
+        $.ajax({
+          url: '//icetea.us3.list-manage.com/subscribe/post-json?u=0fbb6304481fc398e41b28f09&id=5968f8dfbe',
+          data: formData,
+          dataType: 'jsonp',
+          jsonp: 'c'
+        }).then(function () {
+          // console.log('arguments)
+        })
+      } else {
+        window._f7invalid = false
+      }
+      $('.wpcf7-submit').prop('disabled', false)
+    }, 1500)
+  })
+
+  $f.on('wpcf7invalid', function (event) {
+    window._f7invalid = true
+  })
+  */
 })(jQuery)
+
 </script>
-<!--script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/0fbb6304481fc398e41b28f09/5eaadd52b3f84a3323527d8ef.js");</script-->
-<script>(function() {function addEventListener(element,event,handler) {
-	if(element.addEventListener) {
-		element.addEventListener(event,handler, false);
-	} else if(element.attachEvent){
-		element.attachEvent('on'+event,handler);
-	}
-}function maybePrefixUrlField() {
-	if(this.value.trim() !== '' && this.value.indexOf('http') !== 0) {
-		this.value = "http://" + this.value;
-	}
-}
-
-var urlFields = document.querySelectorAll('.mc4wp-form input[type="url"]');
-if( urlFields && urlFields.length > 0 ) {
-	for( var j=0; j < urlFields.length; j++ ) {
-		addEventListener(urlFields[j],'blur',maybePrefixUrlField);
-	}
-}/* test if browser supports date fields */
-var testInput = document.createElement('input');
-testInput.setAttribute('type', 'date');
-if( testInput.type !== 'date') {
-
-	/* add placeholder & pattern to all date fields */
-	var dateFields = document.querySelectorAll('.mc4wp-form input[type="date"]');
-	for(var i=0; i<dateFields.length; i++) {
-		if(!dateFields[i].placeholder) {
-			dateFields[i].placeholder = 'YYYY-MM-DD';
-		}
-		if(!dateFields[i].pattern) {
-			dateFields[i].pattern = '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])';
-		}
-	}
-}
-
-})();</script><script type='text/javascript'>
+<script type='text/javascript'>
 /* <![CDATA[ */
 var wpcf7 = {"apiSettings":{"root":".\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
 /* ]]> */
@@ -505,15 +486,6 @@ var mfn = {"mobileInit":"1240","parallax":"translate3d","responsive":"1","lightb
 <script type='text/javascript' src='./../wp-content/themes/betheme/js/parallax/translate3d.js?ver=21.3'></script>
 <script type='text/javascript' src='./../wp-content/themes/betheme/js/scripts.js?ver=21.3'></script>
 <script type='text/javascript' src='./../wp-includes/js/wp-embed.min.js?ver=5.2.2'></script>
-<script type='text/javascript'>
-/* <![CDATA[ */
-var mc4wp_forms_config = [];
-/* ]]> */
-</script>
-<script type='text/javascript' src='./../wp-content/plugins/mailchimp-for-wp/assets/js/forms-api.min.js?ver=4.5.3'></script>
-<!--[if lte IE 9]>
-<script type='text/javascript' src='./wp-content/plugins/mailchimp-for-wp/assets/js/third-party/placeholders.min.js?ver=4.5.3'></script>
-<![endif]-->
 
 </body>
-</html><!-- WP Fastest Cache file was created in 0.10811591148376 seconds, on 21-08-19 14:11:56 --><!-- via php -->
+</html><!-- WP Fastest Cache file was created in 0.10491895675659 seconds, on 26-08-19 4:47:29 --><!-- need to refresh to see cached version -->

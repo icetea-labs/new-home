@@ -236,73 +236,41 @@
 
 		var ajaxSuccess = function( data, status, xhr, $form ) {
 			detail.id = $( data.into ).attr( 'id' );
-			detail.status = data.status;
+			detail.status = data.result;
 			detail.apiResponse = data;
 
 			var $message = $( '.wpcf7-response-output', $form );
 
-			switch ( data.status ) {
-				case 'validation_failed':
-					$.each( data.invalidFields, function( i, n ) {
-						$( n.into, $form ).each( function() {
-							wpcf7.notValidTip( this, n.message );
-							$( '.wpcf7-form-control', this ).addClass( 'wpcf7-not-valid' );
-							$( '[aria-invalid]', this ).attr( 'aria-invalid', 'true' );
-						} );
-					} );
-
-					$message.addClass( 'wpcf7-validation-errors' );
-					$form.addClass( 'invalid' );
-
-					wpcf7.triggerEvent( data.into, 'invalid', detail );
-					break;
-				case 'acceptance_missing':
-					$message.addClass( 'wpcf7-acceptance-missing' );
-					$form.addClass( 'unaccepted' );
-
-					wpcf7.triggerEvent( data.into, 'unaccepted', detail );
-					break;
-				case 'spam':
-					$message.addClass( 'wpcf7-spam-blocked' );
-					$form.addClass( 'spam' );
-
-					wpcf7.triggerEvent( data.into, 'spam', detail );
-					break;
-				case 'aborted':
-					$message.addClass( 'wpcf7-aborted' );
-					$form.addClass( 'aborted' );
-
-					wpcf7.triggerEvent( data.into, 'aborted', detail );
-					break;
-				case 'mail_sent':
+			switch ( data.result ) {
+				case 'success':
 					$message.addClass( 'wpcf7-mail-sent-ok' );
 					$form.addClass( 'sent' );
 
-					wpcf7.triggerEvent( data.into, 'mailsent', detail );
-					break;
-				case 'mail_failed':
-					$message.addClass( 'wpcf7-mail-sent-ng' );
-					$form.addClass( 'failed' );
-
-					wpcf7.triggerEvent( data.into, 'mailfailed', detail );
 					break;
 				default:
-					var customStatusClass = 'custom-'
-						+ data.status.replace( /[^0-9a-z]+/i, '-' );
-					$message.addClass( 'wpcf7-' + customStatusClass );
-					$form.addClass( customStatusClass );
+					$message.addClass( 'wpcf7-mail-sent-ng' );
+					$form.addClass( 'failed' );
+					break;
+
 			}
 
 			wpcf7.refill( $form, data );
 
 			wpcf7.triggerEvent( data.into, 'submit', detail );
 
-			if ( 'mail_sent' == data.status ) {
+			if ( 'success' == data.result ) {
 				$form.each( function() {
 					this.reset();
 				} );
 
 				wpcf7.toggleSubmit( $form );
+				if ($form.attr('id') === 'downloadForm') {
+					window.open('/wp-content/uploads/2019/08/Icetea-Whitepaper-v0.1.pdf', '_blank')
+				}
+			} else {
+				if (data.msg.indexOf('0 - ') >= 0) {
+					data.msg = 'Please input a valid email address.'
+				}
 			}
 
 			if ( ! wpcf7.supportHtml5.placeholder ) {
@@ -311,7 +279,7 @@
 				} );
 			}
 
-			$message.html( '' ).append( data.message ).slideDown( 'fast' );
+			$message.html( '' ).append( data.msg ).slideDown( 'fast' );
 			$message.attr( 'role', 'alert' );
 
 			$( '.screen-reader-response', $form.closest( '.wpcf7' ) ).each( function() {
@@ -339,14 +307,21 @@
 		};
 
 		$.ajax( {
-			type: 'POST',
-			url: wpcf7.apiSettings.getRoute(
-				'/contact-forms/' + wpcf7.getId( $form ) + '/feedback' ),
-			data: formData,
-			dataType: 'json',
-			processData: false,
-			contentType: false
-		} ).done( function( data, status, xhr ) {
+			url: '//icetea.us3.list-manage.com/subscribe/post-json?u=0fbb6304481fc398e41b28f09&id=5968f8dfbe',
+			data: $form.serialize(),
+			dataType: 'jsonp',
+			jsonp: 'c'
+		  }
+		//   {
+		// 	type: 'POST',
+		// 	url: wpcf7.apiSettings.getRoute(
+		// 		'/contact-forms/' + wpcf7.getId( $form ) + '/feedback' ),
+		// 	data: formData,
+		// 	dataType: 'json',
+		// 	processData: false,
+		// 	contentType: false
+		// }
+		).done( function( data, status, xhr ) {
 			ajaxSuccess( data, status, xhr, $form );
 			$( '.ajax-loader', $form ).removeClass( 'is-active' );
 		} ).fail( function( xhr, status, error ) {
@@ -359,16 +334,15 @@
 		var $target = $( target );
 
 		/* DOM event */
-		var event = new CustomEvent( 'wpcf7' + name, {
-			bubbles: true,
-			detail: detail
-		} );
+		// var event = new CustomEvent( 'wpcf7' + name, {
+		// 	bubbles: true,
+		// 	detail: detail
+		// } );
 
-		$target.get( 0 ).dispatchEvent( event );
+		// $target.get( 0 ).dispatchEvent( event );
 
 		/* jQuery event */
 		$target.trigger( 'wpcf7:' + name, detail );
-		$target.trigger( name + '.wpcf7', detail ); // deprecated
 	};
 
 	wpcf7.toggleSubmit = function( form, state ) {
